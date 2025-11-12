@@ -94,12 +94,12 @@ document.addEventListener('DOMContentLoaded', function () {
         menuBtn.innerHTML = '☰';
         menuBtn.id = 'menuBtn';
         menuBtn.style.cssText = `
-            display: none;
             background: none;
             border: none;
             color: var(--secondary-color);
             font-size: 24px;
             cursor: pointer;
+            margin-right: 1rem;
         `;
 
         header.insertBefore(menuBtn, nav);

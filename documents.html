@@ -73,6 +73,38 @@
             </div>
         </div>
 
+        <!-- 图片展示区域 -->
+        <div class="images-section">
+            <h2>📸 图片库</h2>
+            <p>浏览我收藏的图片资源</p>
+
+            <div class="images-grid">
+                <div class="image-card" onclick="openImagePreview('images/logo.png', '网站Logo')">
+                    <img src="images/logo.png" alt="网站Logo" loading="lazy">
+                    <div class="image-info">
+                        <h3>网站Logo</h3>
+                        <p>网站品牌标识</p>
+                        <p class="file-size">文件大小: ~1MB</p>
+                    </div>
+                </div>
+
+                <div class="image-card" onclick="openImagePreview('lo.png', '其他图片')">
+                    <img src="lo.png" alt="其他图片" loading="lazy">
+                    <div class="image-info">
+                        <h3>其他图片</h3>
+                        <p>个人收藏图片</p>
+                        <p class="file-size">文件大小: ~183KB</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 图片预览模态框 -->
+        <div id="imageModal" class="image-modal">
+            <span class="close-btn" onclick="closeImagePreview()">&times;</span>
+            <img class="image-modal-content" id="imageModalImg">
+        </div>
+
         <div class="upload-section">
             <h2>上传新文档</h2>
             <p>如需上传更多文档，请将文件添加到项目目录中并更新此页面。</p>

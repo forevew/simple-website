@@ -205,7 +205,37 @@ document.addEventListener('DOMContentLoaded', function () {
     document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape') {
             closePreview();
+            closeImagePreview();
         }
     });
+});
+
+// 图片预览功能
+function openImagePreview(imageSrc, imageAlt) {
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('imageModalImg');
+
+    modal.style.display = 'block';
+    modalImg.src = imageSrc;
+    modalImg.alt = imageAlt;
+    document.body.style.overflow = 'hidden'; // 防止背景滚动
+}
+
+function closeImagePreview() {
+    const modal = document.getElementById('imageModal');
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto'; // 恢复背景滚动
+}
+
+// 点击图片模态框背景关闭
+document.addEventListener('DOMContentLoaded', function() {
+    const imageModal = document.getElementById('imageModal');
+    if (imageModal) {
+        imageModal.addEventListener('click', function(e) {
+            if (e.target === imageModal) {
+                closeImagePreview();
+            }
+        });
+    }
 });
 

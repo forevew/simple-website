@@ -228,10 +228,10 @@ function closeImagePreview() {
 }
 
 // 点击图片模态框背景关闭
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const imageModal = document.getElementById('imageModal');
     if (imageModal) {
-        imageModal.addEventListener('click', function(e) {
+        imageModal.addEventListener('click', function (e) {
             if (e.target === imageModal) {
                 closeImagePreview();
             }

@@ -141,19 +141,35 @@ document.addEventListener('DOMContentLoaded', function () {
 // 文档预览功能
 function previewDocument(fileName, fileType) {
     const modal = document.getElementById('previewModal');
-    const viewer = document.getElementById('documentViewer');
+    const iframeViewer = document.getElementById('documentViewer');
+    const pdfViewer = document.getElementById('pdfViewer');
+    const pdfEmbed = document.getElementById('pdfEmbed');
+    const loadingIndicator = document.getElementById('loadingIndicator');
     const modalTitle = document.getElementById('modalTitle');
+
+    // 重置显示状态
+    iframeViewer.style.display = 'none';
+    pdfViewer.style.display = 'none';
+    loadingIndicator.style.display = 'block';
 
     // 设置模态框标题
     if (fileType === 'pdf') {
         modalTitle.textContent = 'PDF文档预览';
-        // 直接显示PDF
-        viewer.src = fileName;
+        // 显示加载指示器
+        setTimeout(() => {
+            loadingIndicator.style.display = 'none';
+            pdfViewer.style.display = 'block';
+            pdfEmbed.src = fileName;
+        }, 500);
     } else if (fileType === 'doc') {
         modalTitle.textContent = 'DOC文档预览';
-        // 使用Google Docs Viewer预览DOC文件
-        const googleViewerUrl = `https://docs.google.com/viewer?url=${encodeURIComponent(window.location.origin + '/' + fileName)}&embedded=true`;
-        viewer.src = googleViewerUrl;
+        // 使用Microsoft Office Online Viewer
+        const officeViewerUrl = `https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(window.location.origin + '/' + fileName)}`;
+        setTimeout(() => {
+            loadingIndicator.style.display = 'none';
+            iframeViewer.style.display = 'block';
+            iframeViewer.src = officeViewerUrl;
+        }, 500);
     }
 
     // 显示模态框
@@ -163,18 +179,22 @@ function previewDocument(fileName, fileType) {
 
 function closePreview() {
     const modal = document.getElementById('previewModal');
-    const viewer = document.getElementById('documentViewer');
+    const iframeViewer = document.getElementById('documentViewer');
+    const pdfEmbed = document.getElementById('pdfEmbed');
+    const loadingIndicator = document.getElementById('loadingIndicator');
 
     modal.style.display = 'none';
-    viewer.src = ''; // 清空iframe内容
+    iframeViewer.src = ''; // 清空iframe内容
+    pdfEmbed.src = ''; // 清空embed内容
+    loadingIndicator.style.display = 'none'; // 隐藏加载指示器
     document.body.style.overflow = 'auto'; // 恢复背景滚动
 }
 
 // 点击模态框背景关闭
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const modal = document.getElementById('previewModal');
     if (modal) {
-        modal.addEventListener('click', function(e) {
+        modal.addEventListener('click', function (e) {
             if (e.target === modal) {
                 closePreview();
             }
@@ -182,7 +202,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // ESC键关闭模态框
-    document.addEventListener('keydown', function(e) {
+    document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape') {
             closePreview();
         }

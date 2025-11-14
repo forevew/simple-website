@@ -137,3 +137,15 @@ document.addEventListener('DOMContentLoaded', function () {
         header.style.justifyContent = 'space-between';
     }
 });
+
+// 文档预览功能
+function previewDocument(fileName) {
+    console.log('预览文档:', fileName); // 调试信息
+
+    // 在新标签页中打开文档
+    window.open(fileName, '_blank');
+
+    console.log('在新标签页中打开文档'); // 调试信息
+}
+
+

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文档中心 - 我的网站</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="images/logo.png" alt="Logo" width="50">
+        </div>
+        <nav>
+            <a href="index.html">首页</a>
+            <a href="about.html">关于我们</a>
+            <a href="documents.html" class="active">文档中心</a>
+            <a href="contact.html">联系方式</a>
+        </nav>
+    </header>
+
+    <main>
+        <h1>文档中心</h1>
+        <p>这里是我的个人文档库，您可以下载查看相关文档。</p>
+
+        <div class="documents-grid">
+            <div class="document-card">
+                <div class="document-icon">📄</div>
+                <h3>软件工程文档</h3>
+                <p>软件工程相关资料和文档</p>
+                <p class="file-size">文件大小: 650 KB</p>
+                <div class="action-buttons">
+                    <button class="preview-btn" onclick="previewDocument('se.doc')">预览</button>
+                    <a href="se.doc" class="download-btn" download>下载</a>
+                </div>
+            </div>
+
+            <div class="document-card">
+                <div class="document-icon">📕</div>
+                <h3>系统集成文档</h3>
+                <p>系统集成相关技术文档</p>
+                <p class="file-size">文件大小: 640 KB</p>
+                <div class="action-buttons">
+                    <button class="preview-btn" onclick="previewDocument('si.pdf')">在新标签页预览</button>
+                    <a href="si.pdf" class="download-btn" download>下载</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="upload-section">
+            <h2>上传新文档</h2>
+            <p>如需上传更多文档，请将文件添加到项目目录中并更新此页面。</p>
+            <div class="upload-note">
+                <strong>注意：</strong>这是一个静态网站，文件上传功能需要后端支持。
+                如需动态上传功能，建议使用云存储服务或CMS系统。
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 我的网站. All rights reserved.</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

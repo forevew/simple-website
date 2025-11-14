@@ -31,7 +31,10 @@
                 <h3>软件工程文档</h3>
                 <p>软件工程相关资料和文档</p>
                 <p class="file-size">文件大小: 650 KB</p>
-                <a href="se.doc" class="download-btn" download>下载 DOC</a>
+                <div class="button-group">
+                    <button class="preview-btn" onclick="previewDocument('se.doc', 'doc')">预览</button>
+                    <a href="se.doc" class="download-btn" download>下载 DOC</a>
+                </div>
             </div>
 
             <div class="document-card">
@@ -39,7 +42,23 @@
                 <h3>系统集成文档</h3>
                 <p>系统集成相关技术文档</p>
                 <p class="file-size">文件大小: 640 KB</p>
-                <a href="si.pdf" class="download-btn" download>下载 PDF</a>
+                <div class="button-group">
+                    <button class="preview-btn" onclick="previewDocument('si.pdf', 'pdf')">预览</button>
+                    <a href="si.pdf" class="download-btn" download>下载 PDF</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 文档预览模态框 -->
+        <div id="previewModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 id="modalTitle">文档预览</h2>
+                    <span class="close-btn" onclick="closePreview()">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <iframe id="documentViewer" src="" width="100%" height="600px" frameborder="0"></iframe>
+                </div>
             </div>
         </div>
 

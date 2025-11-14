@@ -138,4 +138,54 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
+// 文档预览功能
+function previewDocument(fileName, fileType) {
+    const modal = document.getElementById('previewModal');
+    const viewer = document.getElementById('documentViewer');
+    const modalTitle = document.getElementById('modalTitle');
+
+    // 设置模态框标题
+    if (fileType === 'pdf') {
+        modalTitle.textContent = 'PDF文档预览';
+        // 直接显示PDF
+        viewer.src = fileName;
+    } else if (fileType === 'doc') {
+        modalTitle.textContent = 'DOC文档预览';
+        // 使用Google Docs Viewer预览DOC文件
+        const googleViewerUrl = `https://docs.google.com/viewer?url=${encodeURIComponent(window.location.origin + '/' + fileName)}&embedded=true`;
+        viewer.src = googleViewerUrl;
+    }
+
+    // 显示模态框
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden'; // 防止背景滚动
+}
+
+function closePreview() {
+    const modal = document.getElementById('previewModal');
+    const viewer = document.getElementById('documentViewer');
+
+    modal.style.display = 'none';
+    viewer.src = ''; // 清空iframe内容
+    document.body.style.overflow = 'auto'; // 恢复背景滚动
+}
+
+// 点击模态框背景关闭
+document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementById('previewModal');
+    if (modal) {
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                closePreview();
+            }
+        });
+    }
+
+    // ESC键关闭模态框
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closePreview();
+        }
+    });
+});
 
